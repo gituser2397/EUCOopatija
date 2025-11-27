@@ -132,21 +132,4 @@ document.addEventListener('DOMContentLoaded', function(){
       }, 4000);
     });
   });
-
-  const socialGalleries = document.querySelectorAll('.social-galleries .gallery-card');
-  socialGalleries.forEach((card, index) => {
-    if (card.dataset.gallery) {
-      const galleryData = JSON.parse(card.dataset.gallery);
-      const imageContainer = card;
-      const imagePlaceholder = document.createElement('div');
-      imagePlaceholder.className = 'image-container';
-      const imgPlaceholder = document.createElement('div');
-      imgPlaceholder.className = 'image-placeholder';
-      imageContainer.appendChild(imagePlaceholder);
-      imagePlaceholder.appendChild(imgPlaceholder);
-      
-      // Rest of your existing hotel card gallery code here...
-      // (Copy the hotelCards.forEach logic, replacing hotelCards with socialGalleries)
-    }
-  });
 });
