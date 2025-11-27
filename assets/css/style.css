@@ -1,0 +1,360 @@
+
+/* Simple, clean CSS for Opatija event site */
+:root{
+  --accent:#0a78d1;
+  --dark:#0f1720;
+  --muted:#6b7280;
+  --bg:#f7fafc;
+  --container:1100px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--dark);line-height:1.45}
+.container{max-width:var(--container);margin:0 auto;padding:0 18px}
+
+/* Header */
+.site-header{background:#fff;border-bottom:1px solid #e6eef6;position:sticky;top:0;z-index:40}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{font-weight:700;color:var(--accent);letter-spacing:1px;text-decoration:none;font-size:20px}
+.menu-toggle{display:none;background:none;border:0;font-size:22px;cursor:pointer}
+
+/* Nav */
+.main-nav .nav-list{display:flex;gap:18px;list-style:none;align-items:center}
+.main-nav a{text-decoration:none;color:var(--dark);padding:8px 10px;border-radius:6px;display:block}
+.main-nav a:hover{background:rgba(10,120,209,0.06);color:var(--accent)}
+
+/* Dropdown */
+.has-sub{position:relative}
+.sub{position:absolute;left:0;top:30px;min-width:200px;background:#fff;border:1px solid #e6eef6;border-radius:8px;box-shadow:0 6px 18px rgba(15,23,32,0.06);display:none;list-style:none;padding:8px 6px}
+.has-sub:hover > .sub{display:block}
+.sub li a{padding:8px 12px}
+
+/* Hero area */
+.hero{display:flex;gap:28px;align-items:center;padding:34px 0;background:linear-gradient(180deg, rgba(10,120,209,0.04), transparent)}
+.hero .left{flex:1}
+.hero .right{width:420px;max-width:40%}
+.hero h1{font-size:32px;margin-bottom:8px}
+.cta{display:inline-block;background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;margin-top:8px}
+
+/* Video placeholder */
+.promo-video{background:#000;height:320px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;margin:18px 0}
+
+/* Team grid */
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .card:first-child {
+    grid-column: 1 / 4; /* spans all 3 columns */
+    justify-self: center;
+    max-width: 300px; /* limit width */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    padding: 15px;
+    text-align: center;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    text-align: center;
+    padding: 15px;
+  }
+
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+
+  .card p {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #004080;
+  }
+
+  /* Responsive: stack in one column */
+  @media (max-width: 700px) {
+    .team {
+      grid-template-columns: 1fr;
+      max-width: 340px;
+    }
+    .card:first-child {
+      grid-column: auto;
+      max-width: 100%;
+      justify-self: auto;
+    }
+  }
+
+.packages {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.package {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.package img {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.package .meta {
+  flex: 1;
+}
+.package .meta h3 {
+  margin-bottom: 10px;
+  color: #004080;
+}
+.package .meta p {
+  line-height: 1.4;
+  color: #555;
+}
+
+/* Hotels gallery */
+.hotels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hotel-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.hotel-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.featured {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 400px;
+}
+
+.image-container {
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s ease;
+}
+
+.hotel-name {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #004080;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.gallery-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .hotels {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .featured {
+    grid-column: auto;
+    max-width: 100%;
+  }
+}
+
+/* Agenda table */
+.table{background:#fff;padding:12px;border-radius:8px;border:1px solid #eef3f8}
+.table table{width:100%;border-collapse:collapse}
+.table th, .table td{padding:10px;border-bottom:1px solid #f1f5f9;text-align:left}
+
+/* Workshop card */
+.workshop{display:flex;gap:12px;align-items:center;background:#fff;padding:12px;border-radius:8px;border:1px solid #eef3f8}
+
+.daily-trips-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+  }
+  .trip-card {
+    display: flex;
+    gap: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    align-items: center;
+  }
+  .gallery {
+    flex: 1 1 60%;
+    height: 200px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .gallery img, .gallery .image-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    position: absolute;
+    top:0; left:0;
+    transition: opacity 0.5s ease;
+  }
+  .description {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .description h3 {
+    margin: 0;
+    color: #004080;
+  }
+  .description p {
+    margin: 0;
+    color: #555;
+    line-height: 1.4;
+  }
+  .price {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #0073e6;
+  }
+
+  /*extra activites*/
+  .extra-activities-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+  .activity-card {
+    display: flex;
+    gap: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    padding: 15px;
+    align-items: center;
+  }
+  .gallery {
+    flex: 0 0 45%;
+    height: 120px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .gallery .image-placeholder {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0; left:0;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.5s ease;
+  }
+  .description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .description h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #004080;
+  }
+  .description p {
+    margin: 0;
+    color: #555;
+    line-height: 1.3;
+  }
+  .note {
+    color: #888;
+    font-style: italic;
+  }
+
+
+
+/* Gallery layout */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery .tile{background:#fff;border-radius:8px;overflow:hidden}
+.gallery .tile img{width:100%;height:180px;object-fit:cover;display:block}
+
+/* Footer */
+.site-footer{padding:18px 0;margin-top:28px;border-top:1px solid #e6eef6;background:#fff;text-align:center;color:var(--muted)}
+
+/* Responsive */
+@media (max-width:900px){
+  .team{grid-template-columns:1fr}
+  .packages{grid-template-columns:1fr}
+  .hotels{grid-template-columns:repeat(2,1fr)}
+  .menu-toggle{display:inline-block}
+  .main-nav{display:none;background:#fff;position:absolute;left:0;right:0;top:64px;border-top:1px solid #eef3f8;padding:12px}
+  .main-nav.open{display:block}
+  .has-sub .sub{position:static;box-shadow:none;border:0;background:transparent;padding-left:12px;display:none}
+  .has-sub.open > .sub{display:block}
+}
