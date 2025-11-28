@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-  // Existing menu toggle functionality
+  // Menu toggle functionality
   const menuToggle = document.getElementById('menu-toggle');
   const mainNav = document.getElementById('main-nav');
   if (menuToggle && mainNav) {
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
   
-  // Existing dropdown toggle for small screens
+  // Dropdown toggle for small screens
   document.querySelectorAll('.has-sub > a').forEach(a=>{
     a.addEventListener('click', (ev)=>{
       const w = window.innerWidth;
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
   
-  // Existing lightbox functionality
+  // Lightbox functionality
   document.querySelectorAll('img[data-lightbox]').forEach(img=>{
     img.style.cursor = 'pointer';
     img.addEventListener('click', ()=>{
@@ -38,9 +38,8 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
-  // NEW: Hotel gallery rotation functionality
+  // Hotel gallery rotation functionality
   const hotelCards = document.querySelectorAll('.hotel-card');
-  
   hotelCards.forEach((card, index) => {
     if (card.dataset.gallery) {
       const galleryData = JSON.parse(card.dataset.gallery);
@@ -101,35 +100,70 @@ document.addEventListener('DOMContentLoaded', function(){
       startAutoRotate();
     }
   });
-   const dailyGalleries = document.querySelectorAll('.daily-trips-container .gallery, .extra-activities-container .gallery');
+
+  // Daily trips and extra activities galleries
+  const dailyGalleries = document.querySelectorAll('.daily-trips-container .gallery, .extra-activities-container .gallery');
   dailyGalleries.forEach(gallery => {
-    const images = JSON.parse(gallery.dataset.gallery);
-    let current = 0;
+    if (gallery.dataset.gallery) {
+      const images = JSON.parse(gallery.dataset.gallery);
+      let current = 0;
 
-    // Create image placeholders
-    images.forEach((src, index) => {
-      const imgDiv = document.createElement('div');
-      imgDiv.className = 'image-placeholder';
-      imgDiv.style.backgroundImage = `url(${src})`;
-      imgDiv.style.opacity = index === 0 ? '1' : '0';
-      gallery.appendChild(imgDiv);
-    });
+      // Create image placeholders
+      images.forEach((src, index) => {
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'image-placeholder';
+        imgDiv.style.backgroundImage = `url(${src})`;
+        imgDiv.style.opacity = index === 0 ? '1' : '0';
+        gallery.appendChild(imgDiv);
+      });
 
-    const imgDivs = gallery.querySelectorAll('.image-placeholder');
+      const imgDivs = gallery.querySelectorAll('.image-placeholder');
+      let interval;
 
-    let interval = setInterval(() => {
-      imgDivs[current].style.opacity = 0;
-      current = (current + 1) % images.length;
-      imgDivs[current].style.opacity = 1;
-    }, 4000);
-
-    gallery.addEventListener('mouseenter', () => clearInterval(interval));
-    gallery.addEventListener('mouseleave', () => {
-      interval = setInterval(() => {
+      function rotateImages() {
         imgDivs[current].style.opacity = 0;
         current = (current + 1) % images.length;
         imgDivs[current].style.opacity = 1;
-      }, 4000);
-    });
+      }
+
+      interval = setInterval(rotateImages, 4000);
+
+      gallery.addEventListener('mouseenter', () => clearInterval(interval));
+      gallery.addEventListener('mouseleave', () => {
+        interval = setInterval(rotateImages, 4000);
+      });
+    }
+  });
+
+  // NEW: Social galleries rotation functionality
+  const socialCards = document.querySelectorAll('.social-galleries .gallery-card');
+  socialCards.forEach((card) => {
+    if (card.dataset.gallery) {
+      const galleryData = JSON.parse(card.dataset.gallery);
+      
+      // Set first image immediately
+      if (galleryData.length > 0) {
+        card.style.backgroundImage = `url(${galleryData[0]})`;
+      }
+      
+      let currentImage = 0;
+      let autoRotateInterval;
+      
+      function nextImage() {
+        currentImage = (currentImage + 1) % galleryData.length;
+        card.style.backgroundImage = `url(${galleryData[currentImage]})`;
+      }
+      
+      function startAutoRotate() {
+        autoRotateInterval = setInterval(nextImage, 4000);
+      }
+      
+      // Pause on hover
+      card.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
+      card.addEventListener('mouseleave', startAutoRotate);
+      
+      // Start rotation
+      startAutoRotate();
+    }
   });
 });
