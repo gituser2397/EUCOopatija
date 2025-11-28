@@ -376,7 +376,7 @@ body {
 
 /* Agenda table */
 .table {
-  background: #fff;
+  background: #ffffff00;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #eef3f8;
@@ -400,7 +400,7 @@ body {
   display: flex;
   gap: 12px;
   align-items: center;
-  background: white;
+  background: rgba(255, 255, 255, 0);
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #eef3f8;
@@ -415,13 +415,13 @@ body {
   flex-direction: column;
   gap: 40px;
   padding: 20px;
-  color: #e7dbe5;
+  color: #e7dbe500;
 }
 
 .trip-card {
   display: flex;
   gap: 30px;
-  background: white;
+  background: rgba(255, 255, 255, 0);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -482,13 +482,13 @@ body {
   flex-direction: column;
   gap: 30px;
   padding: 20px;
-  color: #e7dbe5;
+  color: #e7dbe500;
 }
 
 .activity-card {
   display: flex;
   gap: 20px;
-  background: white;
+  background: rgba(255, 255, 255, 0);
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   padding: 15px;
@@ -593,15 +593,18 @@ body {
   display: block;
 }
 
-/* Footer */
 .site-footer {
-  padding: 18px 0;
-  margin-top: 28px;
-  border-top: 1px solid #e6eef6;
-  background: #fff;
+  padding: 14px 0; /* Matching header padding vertically */
+  background: rgba(41, 99, 133, 0.829); /* Same translucent blue as header */
+  backdrop-filter: blur(8px); /* Same blur effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  border-top: 1px solid rgba(230, 238, 246, 0.4); /* Subtle transparent border on top */
   text-align: center;
-  color: var(--muted);
+  color: var(--dark); /* Use same text color variable as header */
+  position: relative;
+  z-index: 40;
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
