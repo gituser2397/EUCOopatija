@@ -70,11 +70,12 @@ body{background:var(--bg);color:var(--dark);line-height:1.45}
 
   .card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto; /* Adjust height automatically */
+    object-fit: contain; /* or remove this line entirely */
     border-radius: 10px;
     margin-bottom: 12px;
   }
+
 
   .card p {
     font-weight: 600;
@@ -114,7 +115,7 @@ body{background:var(--bg);color:var(--dark);line-height:1.45}
 .package img {
   width: 350px;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   flex-shrink: 0;
 }
