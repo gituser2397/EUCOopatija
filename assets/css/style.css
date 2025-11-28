@@ -28,7 +28,7 @@ body {
 
 /* Header */
 .site-header {
-  background: rgba(41, 99, 133, 0.404); /* white with 25% opacity */
+  background: rgba(41, 99, 133, 0.829); /* white with 25% opacity */
   backdrop-filter: blur(8px); /* blur behind the header */
   -webkit-backdrop-filter: blur(8px); /* Safari support */
   border-bottom: 1px solid rgba(230, 238, 246, 0.4); /* subtle border with transparency */
@@ -86,27 +86,48 @@ body {
   position: relative;
 }
 
+/* Dropdown - starts exactly below hovered text */
 .sub {
   position: absolute;
   left: 0;
-  top: 30px;
+  top: 100%; /* Starts exactly at bottom of parent link */
   min-width: 200px;
-  background: #fff;
-  border: 1px solid #e6eef6;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(15, 23, 32, 0.06);
+  background: rgba(41, 99, 133, 0.829); /* Same as header */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(230, 238, 246, 0.4);
+  border-top: none; /* Remove top border completely */
+  border-radius: 0 0 8px 8px; /* No top radius, only bottom corners */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   display: none;
   list-style: none;
   padding: 8px 6px;
+  color: var(--dark);
+  margin-top: -1px; /* Pull up to touch parent edge */
+  z-index: 50;
+}
+
+.sub li:first-child a {
+  border-radius: 8px 8px 0 0; /* First item has top rounded corners */
+  margin-top: 0; /* No extra spacing - touches parent */
+}
+
+.sub li a {
+  padding: 8px 12px;
+  color: var(--dark) !important;
+  border-radius: 4px;
+  display: block;
+}
+
+.sub li a:hover {
+  background: rgba(10, 120, 209, 0.2);
+  color: var(--accent) !important;
 }
 
 .has-sub:hover > .sub {
   display: block;
 }
 
-.sub li a {
-  padding: 8px 12px;
-}
 
 /* Hero area */
 .hero {
