@@ -21,6 +21,11 @@ body {
   color: var(--dark);
   line-height: 1.45;
   font-family: inherit; /* Ensure body uses :root font */
+
+  background-image: url("../logo-val-galeb/val_edit2ready_clean.png");
+  background-repeat: repeat-y;       /* Repeat vertically */
+  background-position: left top;     /* Stick to the left edge */
+  background-size: auto;     
 }
 
 .container {
@@ -239,19 +244,31 @@ body {
 
 
 
+.package img {
+  width: 500px; /* Bigger width */
+  height: 280px; /* Bigger height */
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  display: block;
+  border-radius: 8px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
 .packages {
   display: flex;
   flex-direction: column;
   gap: 30px;
   width: 100%;
-  color: #ffffff; /* text color */
+  color: #ffffff;
 }
 
 .package {
   display: flex;
   gap: 25px;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(255, 255, 255, 0);
   padding: 15px;
   border-radius: 8px;
@@ -259,29 +276,35 @@ body {
 }
 
 .package img {
-  width: 350px;
-  height: 200px;
+  width: 500px;
+  height: 280px;
   object-fit: contain;
-  object-position: center; /* Centers the full image */
-  background: transparent; /* Removes any background */
-  display: block; /* Removes inline whitespace */
+  object-position: center;
+  background: transparent;
+  display: block;
   border-radius: 8px;
   flex-shrink: 0;
-  margin: 0; /* Removes any default margins */
+  margin: 0;
 }
 
 .package .meta {
   flex: 1;
-  color: #e7dbe5 !important; /* Override darker colors */
+  color: #e7dbe5 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Much smaller gap between rows */
+  text-align: center; /* Center all text */
 }
 
 .package .meta h3 {
-  margin-bottom: 10px;
+  margin-bottom: 8px; /* Smaller margin for title */
   color: #e7dbe5 !important;
+  text-align: center;
 }
 
 .package .meta p {
-  line-height: 1.4;
+  line-height: 1.3; /* Tighter line height */
+  margin: 0;
   color: #e7dbe5 !important;
 }
 
