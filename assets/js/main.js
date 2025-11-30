@@ -38,15 +38,25 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
-  // Hotel gallery rotation functionality
-  const hotelCards = document.querySelectorAll('.hotel-card');
-  hotelCards.forEach((card, index) => {
-    if (card.dataset.gallery) {
+// FIXED Hotel gallery - with DEBUG
+const hotelCards = document.querySelectorAll('.hotel-card');
+console.log('Found cards:', hotelCards.length); // DEBUG
+
+hotelCards.forEach((card, index) => {
+  console.log(`Card ${index}:`, card.dataset.gallery); // DEBUG
+  
+  if (card.dataset.gallery) {
+    try {
       const galleryData = JSON.parse(card.dataset.gallery);
+      console.log(`Gallery ${index} images:`, galleryData.length); // DEBUG
+      
       const imageContainer = card.querySelector('.image-container');
       const imagePlaceholder = card.querySelector('.image-placeholder');
       
-      if (!imageContainer || !imagePlaceholder) return;
+      if (!imageContainer || !imagePlaceholder || !galleryData.length) {
+        console.error('Missing elements or images for card', index);
+        return;
+      }
       
       // Create dots
       const dotsContainer = document.createElement('div');
@@ -56,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function(){
       let currentImage = 0;
       let autoRotateInterval;
       
-      // Initialize first image
+      // Set first image
       imagePlaceholder.style.backgroundImage = `url(${galleryData[0]})`;
       
       // Create dots
@@ -73,12 +83,7 @@ document.addEventListener('DOMContentLoaded', function(){
       function goToImage(index) {
         currentImage = index;
         imagePlaceholder.style.backgroundImage = `url(${galleryData[index]})`;
-        
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === index);
-        });
-        
-        // Reset auto-rotate
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         clearInterval(autoRotateInterval);
         startAutoRotate();
       }
@@ -89,17 +94,25 @@ document.addEventListener('DOMContentLoaded', function(){
       }
       
       function startAutoRotate() {
-        autoRotateInterval = setInterval(nextImage, 4000);
+        autoRotateInterval = setInterval(nextImage, 3000); // Faster for testing
       }
       
-      // Pause on hover
+      // FORCE START rotation
+      setTimeout(() => {
+        startAutoRotate();
+        console.log(`Card ${index} auto-rotate STARTED`);
+      }, 500);
+      
       card.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
       card.addEventListener('mouseleave', startAutoRotate);
       
-      // Start auto-rotation
-      startAutoRotate();
+    } catch (e) {
+      console.error('JSON parse error:', e);
     }
-  });
+  }
+});
+
+
 
   // Daily trips and extra activities galleries
   const dailyGalleries = document.querySelectorAll('.daily-trips-container .gallery, .extra-activities-container .gallery');

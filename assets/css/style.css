@@ -472,11 +472,10 @@ h1 {
 
 
 
-/* Hotels gallery */
 .hotels {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  gap: 30px; /* Uniform gap everywhere */
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -490,7 +489,8 @@ h1 {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  color: #e7dbe5;
+  width: 100%;
+  height: 280px;
 }
 
 .hotel-card:hover {
@@ -498,14 +498,17 @@ h1 {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.featured {
-  grid-column: 1 / -1;
-  justify-self: center;
-  max-width: 400px;
+/* FIXED - Last card perfectly centered in row */
+.hotel-card.featured {
+  grid-column: 2; /* Center column */
+  justify-self: center; /* Perfect horizontal center */
+  margin-top: 0; /* Remove extra gap */
+  width: 100%;
 }
 
 .image-container {
-  height: 250px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -513,19 +516,12 @@ h1 {
 .image-placeholder {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   transition: opacity 0.5s ease;
 }
 
-.hotel-name {
-  padding: 20px;
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #e7dbe5 !important; /* override */
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
 
 .gallery-dots {
   position: absolute;
