@@ -17,24 +17,63 @@
   padding: 0;
 }
 
+/* SHARED across ALL pages - never overridden */
+:root {
+  --accent: #0a78d1;
+  --container: 1100px;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* HEADER - SAME ON EVERY PAGE */
+.site-header {
+  background: rgba(75,130,181, 1) !important; /* Fixed blue */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(75,130,181, 1);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  color: #e7dbe5 !important; /* Fixed header text */
+}
+
+.site-header,
+.site-header a,
+.site-header * {
+  color: #e7dbe5 !important; /* All header elements fixed */
+}
+
+/* PAGE-SPECIFIC colors only */
+body.homepage {
+  --dark: #e7dbe5;
+  --muted: #b8a8b5;
+  --bg: #e7dbe5;
+  background-image: url("../logo-val-galeb/val_edit2ready_clean.png");
+  background-repeat: repeat-y;
+  background-position: left top;
+  background-size: auto;
+}
+
+body.other-page {
+  --dark: #ffffff;
+  --muted: #f0f0f0;
+  --bg: #063a6a;
+  background-image: none; /* No pattern on other pages */
+}
+
 body {
   background: var(--bg);
   color: var(--dark);
   line-height: 1.45;
-  font-family: inherit; /* Ensure body uses :root font */
-
-  background-image: url("../logo-val-galeb/val_edit2ready_clean.png");
-  background-repeat: repeat-y;       /* Repeat vertically */
-  background-position: left top;     /* Stick to the left edge */
-  background-size: auto;     
+  font-family: inherit;
 }
 
 .container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 18px;
-  color: var(--dark); /* Ensure container inherits font color */
+  color: var(--dark);
 }
+
 
 /* Header */
 .site-header {
@@ -109,13 +148,13 @@ body {
   left: 0;
   top: 100%; /* Starts exactly at bottom of parent link */
   min-width: 200px;
-  background: rgba(41, 99, 133, 0.829); /* Same as header */
+  background: rgba(75,130,181, 1); /* Same as header */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(230, 238, 246, 0.4);
+  /*border: 1px solid rgba(230, 238, 246, 0.4);
   border-top: none; /* Remove top border completely */
   border-radius: 0 0 8px 8px; /* No top radius, only bottom corners */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  /*box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);*/
   display: none;
   list-style: none;
   padding: 8px 6px;
@@ -137,8 +176,8 @@ body {
 }
 
 .sub li a:hover {
-  background: rgba(10, 120, 209, 0.2);
-  color: var(--accent) !important;
+  /*background: rgba(10, 120, 209, 0.2);*/
+  color: #063a6a !important;
 }
 
 .has-sub:hover > .sub {
@@ -343,7 +382,7 @@ body {
 
 
 .package img {
-  width: 500px; /* Bigger width */
+  width: 280px; /* Bigger width */
   height: 280px; /* Bigger height */
   object-fit: contain;
   object-position: center;
@@ -366,15 +405,17 @@ body {
   display: flex;
   gap: 25px;
   width: 100%;
-  align-items: flex-start;
+  align-items: center; /* Changed from flex-start - centers both vertically */
+  justify-content: center; /* Horizontal alignment (X-axis) - centers both elements */
   background-color: rgba(255, 255, 255, 0);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+
 .package img {
-  width: 500px;
+  width: 280px;
   height: 280px;
   object-fit: contain;
   object-position: center;
@@ -390,21 +431,24 @@ body {
   color: #e7dbe5 !important;
   display: flex;
   flex-direction: column;
-  gap: 2px; /* Much smaller gap between rows */
-  text-align: center; /* Center all text */
+  gap: 2px;
+  justify-content: center; /* Vertical center - main axis */
+  align-items: center;     /* Horizontal center - cross axis */
+  text-align: center;      /* Backup text alignment */
+  min-height: 280px;       /* Match image height for perfect centering */
 }
 
 .package .meta h3 {
-  margin-bottom: 8px; /* Smaller margin for title */
+  margin: 0; /* Remove margins for perfect centering */
   color: #e7dbe5 !important;
-  text-align: center;
 }
 
 .package .meta p {
-  line-height: 1.3; /* Tighter line height */
+  line-height: 1.3;
   margin: 0;
   color: #e7dbe5 !important;
 }
+
 
 .right {
   color: #063a6a !important;
