@@ -166,4 +166,27 @@ document.addEventListener('DOMContentLoaded', function(){
       startAutoRotate();
     }
   });
+
+  // Video & music toggle
+const videoToggle = document.querySelector('.video-toggle');
+const promoVideo = document.querySelector('.promo-video');
+const backgroundMusic = document.querySelector('.background-music');
+
+if (videoToggle && promoVideo && backgroundMusic) {
+  let isPlaying = true;
+  
+  videoToggle.addEventListener('click', () => {
+    if (isPlaying) {
+      //promoVideo.pause();
+      backgroundMusic.pause();
+      videoToggle.textContent = '🔇';
+    } else {
+      //promoVideo.play();
+      backgroundMusic.play();
+      videoToggle.textContent = '🎵';
+    }
+    isPlaying = !isPlaying;
+  });
+}
+
 });

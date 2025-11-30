@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 
 
 :root {
   --accent: #0a78d1;
   --dark: #e7dbe5; /* Updated to your desired font color */
   --muted: #b8a8b5;
-  --bg: #063a6a;
+  --bg: #e7dbe5;
   --container: 1100px;
   font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
@@ -37,13 +38,20 @@ body {
 
 /* Header */
 .site-header {
-  background: rgba(41, 99, 133, 0.829); /* white with 25% opacity */
-  backdrop-filter: blur(8px); /* blur behind the header */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
-  border-bottom: 1px solid rgba(230, 238, 246, 0.4); /* subtle border with transparency */
+  background: rgba(75,130,181, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(75,130,181, 1);
   position: sticky;
   top: 0;
   z-index: 40;
+  color: #e7dbe5; /* Header text color */
+}
+
+.site-header,
+.site-header a {
+  color: #e7dbe5 !important; /* Ensures all header text/links are #e7dbe5 */
+  font-weight: 600 !important; /* Medium-bold (slightly bolder than 500) */
 }
 
 .header-inner {
@@ -161,28 +169,99 @@ body {
   margin-bottom: 8px;
 }
 
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0; /* No gap between lines */
+}
+
+.title-line {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900 !important;
+  font-size: 32px;
+  color: #063a6a !important;
+  line-height: 1.1;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .title-line {
+    font-size: 24px;
+  }
+}
+
 .cta {
   display: inline-block;
-  background: var(--accent);
-  color: #e7dbe5;
-  padding: 10px 16px;
+  background: #d41367 !important; /* Deep red background */
+  color: #e7dbe5 !important; /* Light text color */
+  padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  margin-top: 8px;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+  border: none;
 }
 
-/* Video placeholder */
-.promo-video {
-  background: #000;
-  height: 320px;
+.cta:hover {
+  background: #b5125a !important; /* Darker red on hover */
+  color: #ffffff !important; /* Brighter white on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 19, 103, 0.4);
+}
+
+.video-section {
+  position: relative;
+  height: 650px;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+  overflow: hidden;
   margin: 18px 0;
 }
+
+.promo-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.background-music {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0; /* Hidden but plays */
+}
+
+.video-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+}
+
+.video-toggle:hover {
+  background: rgba(212,19,103,0.9);
+}
+
 
 /* Team grid */
 .team-leaders {
@@ -307,6 +386,28 @@ body {
   margin: 0;
   color: #e7dbe5 !important;
 }
+
+.right {
+  color: #063a6a !important;
+}
+
+.right h1,
+.right p,
+.right strong {
+  color: #063a6a !important;
+}
+
+h1 {
+  font-weight: 700 !important; /* Bold (standard bold weight) */
+}
+
+#ShapingEuropeFromCroatianCoast {
+  font-weight: 700 !important; /* Extra bold for maximum impact */
+  font-weight: 900 !important; /* Black/boldest weight */
+}
+
+
+
 
 /* Hotels gallery */
 .hotels {
