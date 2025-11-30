@@ -263,19 +263,19 @@ body {
 }
 
 
-/* Team grid */
+/* Team grid - SAME SIZE, leaders centered like original */
 .team-leaders {
   display: grid;
-  grid-template-columns: repeat(2, 250px);
+  grid-template-columns: repeat(2, 320px); /* Fixed width = same as members */
   gap: 30px;
   justify-content: center;
-  margin: 0 auto 40px;
-  max-width: 1200px;
+  margin: 0 auto 20px;
+  max-width: 960px;
 }
 
 .team-members {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 320px); /* SAME fixed width as leaders */
   grid-template-rows: repeat(3, auto);
   gap: 30px;
   max-width: 960px;
@@ -284,14 +284,15 @@ body {
   color: var(--dark);
 }
 
+/* Force all cards identical size */
 .card {
-  background: rgba(255, 255, 255, 0); /* Transparent background */
-  border-radius: 10px;
-  box-shadow: none; /* Remove shadow for full transparency */
-  text-align: center;
-  padding: 0; /* Remove padding */
-  color: transparent; /* Hide text completely */
+  width: 320px; /* Exact same width */
+  height: 380px; /* Exact same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 
 .card img {
   width: 100%;
@@ -320,6 +321,24 @@ body {
   }
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0; /* Hide text */
+}
+
+.logo img {
+  height: 42px; /* Perfect header height */
+  width: auto; /* Maintain aspect ratio */
+  max-width: 160px; /* Prevent too wide */
+  object-fit: contain;
+  display: block;
+}
+
+.logo:hover img {
+  filter: brightness(1.1); /* Subtle hover effect */
+}
 
 
 
