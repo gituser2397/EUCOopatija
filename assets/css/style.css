@@ -454,17 +454,7 @@ body {
 
 
 
-.package img {
-  width: 280px; /* Bigger width */
-  height: 280px; /* Bigger height */
-  object-fit: contain;
-  object-position: center;
-  background: transparent;
-  display: block;
-  border-radius: 8px;
-  flex-shrink: 0;
-  margin: 0;
-}
+
 
 .packages {
   display: flex;
@@ -473,21 +463,22 @@ body {
   width: 100%;
   color: #ffffff;
   margin-top: 20px;
-  margin-bottom:  100px;
+  margin-bottom: 100px;
+  padding-left: 150px;  /* add left padding to match text */
+  padding-right: 150px; /* add right padding if needed */
 }
 
 .package {
   display: flex;
   gap: 25px;
   width: 100%;
-  align-items: center; /* Changed from flex-start - centers both vertically */
-  justify-content: center; /* Horizontal alignment (X-axis) - centers both elements */
+  align-items: center;
+  justify-content: flex-start; /* left align content */
   background-color: rgba(255, 255, 255, 0);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .package img {
   width: 280px;
@@ -498,7 +489,7 @@ body {
   display: block;
   border-radius: 8px;
   flex-shrink: 0;
-  margin: 0;
+  margin: 0; /* remove margin */
 }
 
 .package .meta {
@@ -507,10 +498,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  justify-content: center; /* Vertical center - main axis */
-  align-items: center;     /* Horizontal center - cross axis */
-  text-align: center;      /* Backup text alignment */
-  min-height: 280px;       /* Match image height for perfect centering */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 280px;
 }
 
 .package .meta h3 {
