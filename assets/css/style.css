@@ -454,6 +454,13 @@ body {
 
 
 
+h2 {
+  text-align: center;
+  width: 100%; /* Optional: ensure it spans full width */
+  margin-left: auto;
+  margin-right: auto;
+  display: block; /* default, but explicit */
+}
 
 
 .packages {
