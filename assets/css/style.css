@@ -57,7 +57,10 @@ body.other-page {
   --dark: #ffffff;
   --muted: #f0f0f0;
   --bg: #063a6a;
-  background-image: none; /* No pattern on other pages */
+  background-image: url("../logo-val-galeb/val_edit2ready_clean.png");
+  background-repeat: repeat-y;
+  background-position: left top;
+  background-size: auto;
 }
 
 body {
@@ -134,7 +137,7 @@ body {
 
 .main-nav a:hover {
   background: rgba(10, 120, 209, 0.06);
-  color: var(--accent);
+  color: #063a6a !important;
 }
 
 /* Dropdown */
@@ -339,42 +342,62 @@ body {
 }
 
 
-/* Team grid - SAME SIZE, leaders centered like original */
+/* Center section with bolded header matching hover color */
+.meet-hoc-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.meet-hoc-section h2 {
+  font-weight: 900 !important; /* Extra bold */
+  font-size: 3rem; /* Large prominent size */
+  color: #063a6a !important; /* SAME dark blue as hover */
+  margin: 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+
+/* Team grid - BIGGER pictures, TIGHTER spacing */
 .team-leaders {
   display: grid;
-  grid-template-columns: repeat(2, 320px); /* Fixed width = same as members */
-  gap: 30px;
+  grid-template-columns: repeat(2, 400px); /* BIGGER: 320px → 400px */
+  gap: 16px; /* TIGHTER: 30px → 16px */
   justify-content: center;
   margin: 0 auto 20px;
-  max-width: 960px;
+  max-width: 840px; /* Adjusted for bigger cards */
 }
 
 .team-members {
   display: grid;
-  grid-template-columns: repeat(3, 320px); /* SAME fixed width as leaders */
+  grid-template-columns: repeat(3, 400px); /* BIGGER: 320px → 400px */
   grid-template-rows: repeat(3, auto);
-  gap: 30px;
-  max-width: 960px;
+  gap: 16px; /* TIGHTER: 30px → 16px */
+  max-width: 1240px; /* Adjusted for bigger cards */
   margin: 0 auto;
   justify-content: center;
   color: var(--dark);
 }
 
-/* Force all cards identical size */
+/* Force all cards identical size - BIGGER */
 .card {
-  width: 320px; /* Exact same width */
-  height: 380px; /* Exact same height */
+  width: 400px; /* BIGGER: 320px → 400px */
+  height: 480px; /* BIGGER: 380px → 480px */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-
 .card img {
   width: 100%;
-  height: auto;
+  height: 420px; /* BIGGER image area */
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 12px; /* Slightly larger radius */
   margin-bottom: 12px;
   background: transparent !important;
   display: block;
@@ -384,18 +407,31 @@ body {
   display: none; /* Completely hide text */
 }
 
-/* Responsive */
+/* Responsive - still works perfectly */
 @media (max-width: 900px) {
   .team-leaders {
     grid-template-columns: 1fr;
-    max-width: 340px;
+    max-width: 420px; /* Bigger mobile too */
+    gap: 20px;
   }
   
   .team-members {
     grid-template-columns: 1fr;
-    max-width: 340px;
+    max-width: 420px; /* Bigger mobile too */
+    gap: 20px;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 420px;
+    height: 480px;
+  }
+  
+  .card img {
+    height: 420px;
   }
 }
+
 
 .logo {
   display: flex;
@@ -436,6 +472,8 @@ body {
   gap: 30px;
   width: 100%;
   color: #ffffff;
+  margin-top: 20px;
+  margin-bottom:  100px;
 }
 
 .package {
@@ -976,6 +1014,7 @@ h1 {
   .main-nav.open {
     display: block;
   }
+
   .has-sub .sub {
     position: static;
     box-shadow: none;
